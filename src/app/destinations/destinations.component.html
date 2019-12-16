@@ -1,0 +1,94 @@
+
+<!-- SECTION main -->
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-8">
+        <!-- row -->
+        <div class="row">
+            
+          
+              <!-- post -->
+              <div *ngIf="!filterBool">
+
+                <div class="col-md-12">
+                  <div class="section-title">
+                    <h2 class="title">Countries</h2>
+                  </div>
+                </div>
+                <div class="cleaner"></div>
+
+                <div class="footer-widget" @slide>
+                      <div class="tags-widget">
+                        <ul>
+                          <li *ngFor="let category of categories">
+                            <a class="categories-link" routerLink="/destinations/category/{{category.path}}">{{category.name}}</a>
+                          </li>
+                        </ul>
+                      </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="section-title">
+                    <h2 class="title">Destinations</h2>
+                  </div>
+                </div>
+                <div class="cleaner"></div>
+
+                <div class="col-md-6" *ngFor="let dest of destinations | sortDesc: 'date'">
+                    <div class="post">
+                        <a class="post-img" routerLink="/destination/{{dest.id}}"><img src="./assets/img/{{dest.image}}" alt="{{dest.title}}"></a>
+                        <div class="post-body">
+                            <div class="post-category">
+                                <a routerLink="/destinations/category/{{dest.category}}">{{dest.category}}</a>
+                            </div>
+                            <h3 class="post-title"><a routerLink="/destination/{{dest.id}}">{{dest.title | shorten:40}}</a></h3>
+                            <ul class="post-meta">
+                                <li>{{dest.date | date: 'mediumDate'}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div *ngIf="filterBool">
+
+                <div class="col-md-12">
+                  <div class="section-title">
+                    <h2 class="title">Destinations in {{category}}</h2>
+                  </div>
+                </div>
+                <div class="cleaner"></div>
+
+                <div class="col-md-6" *ngFor="let dest of filteredDestinations | sortDesc: 'date'">
+                    <div class="post">
+                        <a class="post-img" routerLink="/destination/{{dest.id}}"><img src="./assets/img/{{dest.image}}" alt="{{dest.title}}"></a>
+                        <div class="post-body">
+                            <div class="post-category">
+                                <a routerLink="/destinations/category/{{dest.category}}">{{dest.category}}</a>
+                            </div>
+                            <h3 class="post-title"><a routerLink="/destination/{{dest.id}}">{{dest.title | shorten:40}}</a></h3>
+                            <ul class="post-meta">
+                                <li>{{dest.date | date: 'mediumDate'}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <!-- /post -->
+
+          </div>
+          <!-- /row -->
+      </div>
+      
+      <!--Side-->
+      <app-aside></app-aside>
+      <!--Side-->
+
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /SECTION main -->

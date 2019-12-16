@@ -1,0 +1,21 @@
+.section-row p
+{
+    text-align: justify;
+}
+
+.error-message {
+    color: #800;
+}
+.red {
+    color: #a00;
+}
+
+.tags-widget
+{
+    margin-top: 35px;
+}
+
+.categories-link
+{
+    background-color: #e5e5e5;
+}

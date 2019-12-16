@@ -1,0 +1,52 @@
+<footer id="footer">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-6">
+					<div class="footer-widget">
+						<div class="footer-logo">
+							<a routerLink="/" class="logo"><img src="./assets/img/logo-alt.png" alt="Travel Dairy Blog"></a>
+						</div>
+						<ul class="contact-social">
+							<li><a href="https://www.facebook.com/" class="social-facebook"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="https://www.twitter.com/" class="social-twitter"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="https://www.google.com/" class="social-google-plus"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="https://www.instagram.com/" class="social-instagram"><i class="fa fa-instagram"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="footer-widget">
+						<h3 class="footer-title">Destinations</h3>
+						<div class="tags-widget">
+							<ul>
+								<li *ngFor="let category of categories">
+									<a routerLink="destinations/category/{{category.path}}">{{category.name}}</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /row -->
+
+			<!-- row -->
+			<div class="footer-bottom row">
+				<div class="col-md-6 col-md-push-6">
+					<ul class="footer-nav">
+						<li *ngFor="let page of pages">
+								<a routerLink="{{page.path}}">{{page.title}}</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-6 col-md-pull-6">
+					<div class="footer-copyright">
+Copyright &copy; All rights reserved | <i class="fa fa-code" aria-hidden="true"></i> Adapted by: Marko Mutavdzic 125/16
+					</div>
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</footer>

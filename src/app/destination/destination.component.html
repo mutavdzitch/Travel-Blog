@@ -1,0 +1,132 @@
+<!-- SECTION -->
+<div class="section" *ngIf="loaded">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- post content -->
+                <div class="section-row">
+                    <figure>
+                        <img src="./assets/img/{{destination?.image}}" alt="{{destination?.title}}">
+                    </figure>
+                    <h1>{{ destination?.title }}</h1>
+                    <ul class="post-meta">
+                        <li>{{destination?.date | date: 'mediumDate'}}</li>
+                        <li><div class="post-tags">
+                                <ul>
+                                    <li>
+                                        <a routerLink="/destinations/category/{{destination?.category}}">{{ destination?.category }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <p>{{destination?.description}}</p>
+                </div>
+                <!-- /post content -->
+
+                <!-- post tags -->
+                <div class="section-row">
+                    <div class="post-tags">
+                        <ul>
+                            <li>Country: </li>
+                            <li>
+                                <a routerLink="/destinations/category/{{destination?.category}}">{{ destination?.category }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <div class="tags-widget">
+                          <ul>
+                            <li *ngFor="let category of categories">
+                              <a class="categories-link" routerLink="/destinations/category/{{category.path}}">{{category.name}}</a>
+                            </li>
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /post tags -->
+
+                <!-- post comments -->
+                <div class="section-row" *ngIf="commentsBool">
+                    <div class="section-title">
+                        <h3 class="title">Comments</h3>
+                    </div>
+                    <div class="post-comments">
+                        <!-- comment -->
+                        <div class="media" *ngFor="let comment of commentsOfThisId | sortDesc: 'created'">
+                            <div class="media-left">
+                                <img class="media-object" src="./assets/img/avatar.jpg" alt="User">
+                            </div>
+                            <div class="media-body">
+                                <div class="media-heading">
+                                    <h4>{{comment.name}}</h4>
+                                    <span class="time">{{comment.created | date: 'medium' }}</span>
+                                </div>
+                                <p>{{comment.message}}</p>
+                            </div>
+                        </div>
+                        <!-- /comment -->
+                    </div>
+                </div>
+                <div class="section-row" *ngIf="!commentsBool">
+                    <div class="section-title">
+                        <h3 class="title">No comments</h3>
+                    </div>
+                </div>
+                <!-- /post comments -->
+
+                <!-- post reply -->
+                <div class="section-row">
+                    <div class="section-title">
+                        <h3 class="title">Leave a comment</h3>
+                    </div>
+                    <form [formGroup]="addCommentForm" class="post-reply" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" [class.has-error]="!addCommentForm.get('message').valid && addCommentForm.get('message').touched" [class.has-success]="addCommentForm.get('message').valid" >
+                                    <textarea class="input" name="message" id="message" formControlName="message" placeholder="Message"></textarea>
+                                    <span *ngIf="!addCommentForm.get('message').valid && addCommentForm.get('message').touched" class="error-message">
+                                        <span *ngIf="addCommentForm.get('message').errors['maxlength']">The message is too long ( 10 to 255 characters)</span>
+                                        <span *ngIf="addCommentForm.get('message').errors['minlength']">The message is too short ( 10 to 255 characters)</span>
+                                        <span *ngIf="addCommentForm.get('message').errors['required']">The message field is required</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" [class.has-error]="!addCommentForm.get('name').valid && addCommentForm.get('name').touched" [class.has-success]="addCommentForm.get('name').valid" >
+                                    <input class="input" name="name" id="name" formControlName="name" placeholder="Name">
+                                    <span *ngIf="!addCommentForm.get('name').valid && addCommentForm.get('name').touched" class="error-message">
+                                        <span *ngIf="addCommentForm.get('name').errors['maxlength']">The name is too long ( 3 to 30 characters)</span>
+                                        <span *ngIf="addCommentForm.get('name').errors['minlength']">The name is too short ( 3 to 30 characters)</span>
+                                        <span *ngIf="addCommentForm.get('name').errors['required']">The name field is required</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                    <div class="form-group" [class.has-error]="!addCommentForm.get('email').valid && addCommentForm.get('email').touched" [class.has-success]="addCommentForm.get('email').valid" >
+                                        <input class="input" type="email" name="email" id="email" formControlName="email" placeholder="Email">
+                                        <span *ngIf="!addCommentForm.get('email').valid && addCommentForm.get('email').touched" class="error-message">
+                                            <span *ngIf="addCommentForm.get('email').errors['email']">The email is not in good format ( example@example.com )</span>
+                                            <span *ngIf="addCommentForm.get('email').errors['required']">The email field is required</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="primary-button">Submit</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <!-- /post reply -->
+            </div>
+            
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->
+<app-not-found *ngIf="!loaded"></app-not-found>

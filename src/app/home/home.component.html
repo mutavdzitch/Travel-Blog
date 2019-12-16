@@ -1,0 +1,46 @@
+          <!-- SECTION hot -->
+          <div class="section">
+            <!-- container -->
+            <div class="container">
+              <!-- row HOME HOT POST-->
+              <div id="hot-post" class="row hot-post">
+                <div class="col-md-8 hot-post-left">
+                  <!-- post -->
+                  <div class="post post-thumb" *ngFor="let dest of destinations | sortDesc: 'date' | slice:0:2">
+                    <a class="post-img" routerLink="/destination/{{dest.id}}"><img src="./assets/img/{{dest.image}}" alt="{{dest.title}}"></a>
+                    <div class="post-body">
+                      <div class="post-category">
+                        <a routerLink="/destinations/category/{{dest.category.path}}">{{dest.category.name}}</a>
+                      </div>
+                      <h3 class="post-title title-lg"><a routerLink="/destination/{{dest.id}}">{{dest.title}}</a></h3>
+                      <ul class="post-meta">
+                        <li>{{dest.date | date: 'mediumDate'}}</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /post -->
+                </div>
+                <div class="col-md-4 hot-post-right">
+                
+                  <!-- post -->
+                  <div class="post post-thumb" *ngFor="let dest of destinations | sortDesc: 'date' | slice:2:6">
+                    <a class="post-img" routerLink="/destination/{{dest.id}}"><img src="./assets/img/{{dest.image}}" alt="{{dest.title}}"></a>
+                    <div class="post-body">
+                      <div class="post-category">
+                        <a routerLink="/destinations/category/{{dest.category.path}}">{{dest.category.name}}</a>
+                      </div>
+                      <h3 class="post-title"><a routerLink="/destination/{{dest.id}}">{{dest.title}}</a></h3>
+                      <ul class="post-meta">
+                        <li>{{dest.date | date: 'mediumDate'}}</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /post -->
+
+                </div>
+              </div>
+              <!-- /row HOME HOT POST-->
+            </div>
+            <!-- /container -->
+          </div>
+          <!-- /SECTION hot -->

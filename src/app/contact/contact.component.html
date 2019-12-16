@@ -1,0 +1,80 @@
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-8">
+                <div class="section-row">
+                    <div class="section-title">
+                        <h2 class="title">Mail us</h2>
+                    </div>
+                    <form [formGroup]="contactForm" class="post-reply" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" [class.has-error]="!contactForm.get('subject').valid && contactForm.get('subject').touched" [class.has-success]="contactForm.get('subject').valid" >
+                                    <input class="input" name="subject" id="subject" formControlName="subject" placeholder="Subject">
+                                    <span *ngIf="!contactForm.get('subject').valid && contactForm.get('subject').touched" class="error-message">
+                                        <span *ngIf="contactForm.get('subject').errors['maxlength']">The subject is too long ( 3 to 30 characters)</span>
+                                        <span *ngIf="contactForm.get('subject').errors['minlength']">The subject is too short ( 3 to 30 characters)</span>
+                                        <span *ngIf="contactForm.get('subject').errors['required']">The subject field is required</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group" [class.has-error]="!contactForm.get('message').valid && contactForm.get('message').touched" [class.has-success]="contactForm.get('message').valid" >
+                                    <textarea class="input" name="message" id="message" formControlName="message" placeholder="Message"></textarea>
+                                    <span *ngIf="!contactForm.get('message').valid && contactForm.get('message').touched" class="error-message">
+                                        <span *ngIf="contactForm.get('message').errors['maxlength']">The message is too long ( 10 to 255 characters)</span>
+                                        <span *ngIf="contactForm.get('message').errors['minlength']">The message is too short ( 10 to 255 characters)</span>
+                                        <span *ngIf="contactForm.get('message').errors['required']">The message field is required</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" [class.has-error]="!contactForm.get('name').valid && contactForm.get('name').touched" [class.has-success]="contactForm.get('name').valid" >
+                                    <input class="input" name="name" id="name" formControlName="name" placeholder="Name">
+                                    <span *ngIf="!contactForm.get('name').valid && contactForm.get('name').touched" class="error-message">
+                                        <span *ngIf="contactForm.get('name').errors['maxlength']">The name is too long ( 3 to 30 characters)</span>
+                                        <span *ngIf="contactForm.get('name').errors['minlength']">The name is too short ( 3 to 30 characters)</span>
+                                        <span *ngIf="contactForm.get('name').errors['required']">The name field is required</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                    <div class="form-group" [class.has-error]="!contactForm.get('email').valid && contactForm.get('email').touched" [class.has-success]="contactForm.get('email').valid" >
+                                        <input class="input" type="email" name="email" id="email" formControlName="email" placeholder="Email">
+                                        <span *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched" class="error-message">
+                                            <span *ngIf="contactForm.get('email').errors['email']">The email is not in good format ( example@example.com )</span>
+                                            <span *ngIf="contactForm.get('email').errors['required']">The email field is required</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="primary-button">Send</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!-- contact inforations -->
+                <div class="section-row">
+                    <div class="section-title">
+                        <h2 class="title">Contact Information</h2>
+                    </div>
+                    <ul class="contact">
+                        <li><i class="fa fa-phone"></i>+381 11 234567</li>
+                        <li><i class="fa fa-envelope"></i> <a href="#">traveldiary@email.com</a></li>
+                        <li><i class="fa fa-map-marker"></i>Nemanjina 45, Belgrade</li>
+                    </ul>
+                </div>
+                <!-- /contact inforations -->
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->

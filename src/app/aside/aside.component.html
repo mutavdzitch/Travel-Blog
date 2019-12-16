@@ -1,0 +1,24 @@
+<div class="col-md-4">
+        <!-- post widget -->
+        <div class="aside-widget">
+          
+          <div class="section-title">
+            <h2 class="title">Recent Posts</h2> <!--popular-->
+          </div>
+
+          <!-- post -->
+          <div class="post post-widget" *ngFor="let dest of destinations | slice:0:8 | sortDesc: 'date'">
+            <a class="post-img" routerLink="/destination/{{dest.id}}" [routerLink]="['/destination',dest.id]"><img src="./assets/img/{{dest.image}}" alt="{{dest.title}}"></a>
+            <div class="post-body">
+              <div class="post-category">
+                <b>#{{dest.category}}</b>
+              </div>
+              <h3 class="post-title"><a routerLink="/destination/{{dest.id}}">{{dest.title | shorten:40}}</a></h3>
+            </div>
+          </div>
+          <!-- /post -->
+
+
+        </div>
+        <!-- /post widget -->
+      </div>
